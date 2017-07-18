@@ -1,0 +1,18 @@
+<% if @is_upvoted %>
+$('#upvote_<%=@question.id%>').addClass("marked");
+$('#downvote_<%=@question.id%>').removeClass("unmarked");
+$('#upvote_<%= @question.upvotes.count %>').html("UpVote");
+
+noty({text: 'Question was Upvoted', type: 'success',timeout: 1000});
+
+<% else %>
+
+$('#upvote_<%=@question.id%>').removeClass("marked");
+
+$('#upvote_<%= @question.upvotes.count %>').html("UpVote");
+noty({text: 'Removed Upvote', type: 'alert',timeout: 1000});
+<% end %>
+
+
+
+

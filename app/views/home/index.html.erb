@@ -1,0 +1,356 @@
+<header>
+
+<div class="logo">
+<%= image_tag 'images.png' %>
+</div>
+
+<font color="#9f9f9f" size="7">
+<nav>
+
+<ul>
+<li>  <i class="fa fa-book" aria-hidden="true"></i>  Read</li>
+
+<li> <i class="fa fa-pencil-square" aria-hidden="true"></i>  Answers</li>
+<li><i class="fa fa-bell" aria-hidden="true"></i>  Notifications</li>
+<li><i class="fa fa-sign-out" aria-hidden="true"></i>  <%= link_to "Sign Out",destroy_user_session_path,method: :delete ,data: { confirm: "Are you sure?"}%></li>
+  
+</ul>
+</nav>
+
+</font>
+</header>
+
+
+<main>
+
+<div class="sidebar">
+
+<font color="black" size="7">
+
+<ul>
+<b>
+<li>  Feeds</li>
+<hr>
+</b>
+</font>
+<font color="#9f9f9f" size="7">
+<li>  Top Stories</li>
+<li> New Questions</li>
+<li>Bookmarked Answers </li>
+<li>.NET Framework </li>
+<li>Startups</li>
+
+
+</ul>
+
+
+</font>
+
+
+</div>
+
+
+
+
+
+
+
+
+<aside>
+
+</aside>
+
+<section>
+<br><br>
+
+
+
+<div class="box">
+
+<div id="myBtn" class="inner"><b>What is your question?</b></div>
+
+
+</div>
+<br><br><br>
+
+<div id="questions">
+
+<% @question_feed.each do |question| %>
+
+<%= render 'question', question: question %>
+  <% end %>
+
+</div>
+
+
+
+
+
+
+<div id="myModal" class="modal">
+
+  <!-- Modal content -->
+  <div class="modal-content">
+    <div class="modal-header">
+      <span class="close">&times;</span>
+      
+    </div>
+ 
+
+    <div class="modal-body">
+      <p>
+        <b>
+            <div class="createQuestion">
+          
+            <%= form_for @question do |f|%>
+    
+            <%= f.text_area :content ,placeholder: "What is your question?", :class => 'a1', required: true%> <br>
+
+
+
+
+      
+
+      </b></p>
+      <br><br>
+    </div>
+    <div class="modal-footer">
+    <div class ="actions">
+     <%= f.submit value:"Ask Question" ,:class => 'button'%>
+<%end%>
+    
+    </div>
+  </div>
+
+</div>
+
+
+
+
+
+
+
+</section>
+
+</main>
+
+<style type="text/css">
+
+hr{
+    margin-top: 7px;
+    margin-bottom: 7px;
+    border: solid 0.01em  !important;
+
+}
+
+.box{
+	display: block;
+	background-color: #fff;
+    border-radius: 4px;
+    margin-top: 40px;
+	margin-left: 400px;
+	background-color:white;
+	box-shadow: 1px 1px 0 #f7f7f7;
+	border:2px solid #efefef ;
+	height: 90px;
+	width: 40%;
+}
+.inner{
+    cursor: pointer;
+	padding-left: 20px;
+	padding-top: 44px;
+	font-size: 19px;
+	font-family: 'q_serif',Georgia,Times,"Times New Roman",serif;
+	color: #999;
+    
+}
+.inner:hover{
+	color: #3068c1;
+}
+
+
+.a1{
+                    width: 100%;
+                    height: 60%;
+                    padding-left: 4px;
+                    padding-top: 4px;
+                    border-radius:35px;
+                    border: 2px solid grey; 
+                    }
+                
+
+.button {
+    background-color: #f1f8fb;
+    border: 1px solid #bbcadc;
+    border-radius: 4px;
+    color: #2b6dad;
+   margin: 4px 2px;
+    text-align: center;
+    text-decoration: none;
+    padding: 4px 15px;
+    font-size: 16px;
+    cursor: pointer;
+    background-color: darken(#f1f8fb, 5%);
+}
+
+.button:after {
+    content: "";
+    background: #90EE90;
+    display: block;
+    position: absolute;
+    padding-top: 300%;
+    padding-left: 350%;
+    margin-left: -20px!important;
+    margin-top: -120%;
+    opacity: 0;
+    transition: all 0.8s
+}
+
+.button:active:after {
+    padding: 0;
+    margin: 0;
+    opacity: 1;
+    transition: 0s
+}
+p{
+    padding-left: 20px;
+    padding-top: 44px;
+    font-size: 19px;
+    font-family: 'q_serif',Georgia,Times,"Times New Roman",serif;
+    color: #999; 
+}
+
+<style>
+
+
+.modal {
+    display: none; 
+    position: fixed; 
+    z-index: 1; 
+    padding-top: 100px; 
+    left: 0;
+    top: 0;
+    width: 40%; 
+    height: 80%; 
+    overflow: auto; 
+    background-color: rgb(0,0,0); 
+    background-color: rgba(0,0,0,0.4); 
+
+}
+
+
+.modal-content {
+    position: relative;
+    background-color: white;
+    margin: auto;
+    padding: 0;
+    border: 1px none;
+    width: 50%;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+    -webkit-animation-name: animatetop;
+    -webkit-animation-duration: 0.4s;
+    animation-name: animatetop;
+    margin-top: 200px;
+    animation-duration: 0.4s
+
+}
+
+
+@-webkit-keyframes animatetop {
+    from {top:-300px; opacity:0} 
+    to {top:0; opacity:1}
+}
+
+@keyframes animatetop {
+    from {top:-300px; opacity:0}
+    to {top:0; opacity:1}
+}
+
+
+.close {
+    color: black;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.modal-header {
+    padding: 2px 16px;
+    background-color: #f6f6f6;
+    color: black;
+}
+
+.modal-body {padding: 2px 16px;}
+
+.modal-footer {
+    padding: 2px 16px;
+    background-color: #f6f6f6;
+    color: black;
+}
+
+
+
+
+
+
+
+</style>
+
+
+
+
+<script src="https://use.fontawesome.com/8d594f9226.js"></script>
+
+
+
+
+<script type="text/javascript">
+	
+	var modal = document.getElementById('myModal');
+
+
+var btn = document.getElementById("myBtn");
+
+var span = document.getElementsByClassName("close")[0];
+
+// When the user clicks the button, open the modal 
+btn.onclick = function() {
+    modal.style.display = "block";
+}
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+    modal.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+
+
+   }
+
+
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+

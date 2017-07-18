@@ -1,0 +1,147 @@
+// Place all the styles related to the Home controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+
+header{
+	position:fixed;
+	margin:auto;
+	height:47px;
+	display: flex;
+	justify-content: space-between;
+	background-color:white;
+	border-top: 2px solid #b30000;
+	border-bottom: 1px solid #ddd;
+	div.logo{
+	 	img { 
+	 			margin-top:12px;
+	 			margin-left: 227px;
+	 			height: 22px;
+
+			}
+	}
+	nav{
+		margin-right: 350px;
+		ul{
+			display:flex;
+			margin-left:409px;
+			li{	
+
+				font-size:14px;
+				list-style:none;
+				margin-right: 15px;
+				margin-top: 13px;
+				i{
+					size:30px;
+				}
+			}
+		}
+	}
+}
+
+
+
+
+div#questions{
+            div.question{
+                border:2px solid #efefef ;
+                display: flex;
+               
+				width: 40%;
+                background-color: white;
+               box-shadow: 1px 1px 0 #f7f7f7;
+                padding: 12px;
+               margin-left: 400px;
+
+               
+  				height: auto;
+  				word-break: break-word;
+    
+    			
+
+
+                div.left{
+
+                    width: 50px;
+                    div.userImage{
+                        width: 45px;
+                        height: 45px;
+                        border-radius: 50px;
+                        background-image:url('http://www.freeiconspng.com/uploads/account-icon-5.jpg');
+                        -webkit-background-size: cover;
+                        -moz-background-size: cover;
+                        -o-background-size: cover;
+    
+                        background-repeat: no-repeat;
+                        
+                        background-position: center;
+                 
+    					         img{
+                        height: 45px;
+                        width: 45px;
+                        border-radius: 20px;
+                        }
+                        
+                    }
+                }
+                div.right{
+                	
+                	margin-left:4px;
+                    flex-grow:1;
+                    div.userDetail{
+                    	
+                    	margin-top:1px;
+
+                    }
+                }
+            }
+}
+
+
+
+
+
+
+main{
+	div.sidebar{
+
+		ul{
+			
+			position: fixed;
+			margin-left:210px;
+			margin-top: 100px;
+			li{	
+				margin-top: 7px;
+				font-size:14px;
+				list-style:none;
+				margin-right: 15px;
+				
+				
+			}
+		}
+
+
+
+
+
+	}
+}
+
+.marked{
+   
+    color: green;
+    font-weight: bold;
+}
+.unmarked{
+   
+  font-weight: bold;
+  color: red;
+  
+
+
+
+
+
+}
+

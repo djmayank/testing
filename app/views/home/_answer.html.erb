@@ -1,0 +1,78 @@
+<%if a.questions_id == question_id %>
+
+
+<div class="show1">
+
+
+
+		
+<div class="temp">
+<div class="left">
+		<div class="userImage">
+
+
+</div>
+</div>
+
+<ul class="hello1">
+<li class="hello2">
+<div class="userDetail">
+		<b>
+		<%= a.user.email %>
+		</b>
+</div>
+
+
+
+</li>
+
+
+
+
+<li class="hello2">
+
+		<br>
+ <div class="date1">
+<% if a.created_at > Time.now.beginning_of_day %>
+<%="#{time_ago_in_words(a.created_at)} ago"%>
+<% else %>
+    <%= a.created_at.strftime("%b %d, %Y") %>  
+<% end %>
+</div>
+<br>
+
+</div>
+
+</li>
+</ul>
+
+
+
+<div class="content1">
+
+<%= a.content %>
+</div>
+
+
+
+
+
+
+	
+
+
+<br>
+
+</div>
+<% end %>
+
+<div class="actions"> 
+
+
+
+		</div>
+
+
+
+
+

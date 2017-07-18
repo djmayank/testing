@@ -1,0 +1,11 @@
+<% if @is_downvoted %>
+$('#upvote_<%=@question.id%>').removeClass("marked");
+$('#downvote_<%=@question.id%>').addClass("unmarked");
+noty({text: 'Question was Downvoted', type: 'alert',timeout: 1000});
+
+<% else %>
+
+$('#downvote_<%=@question.id%>').removeClass("unmarked");
+noty({text: 'Removed Downvote', type: 'alert',timeout: 1000});
+
+<% end %>

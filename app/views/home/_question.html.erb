@@ -1,0 +1,409 @@
+<div class="question">
+	<div class="left">
+		<div class="userImage">
+
+
+</div>
+</div>
+
+	<div class="right">
+
+
+		<B><div class="userDetail">
+		<%= question.user.email %>
+		</div></B>
+
+ 		<font size="2px" color="grey">
+
+			<% if question.created_at > Time.now.beginning_of_day %>
+    <%="#{time_ago_in_words(question.created_at)} ago"%>
+ <% else %>
+    <%= question.created_at.strftime("%b %d, %Y") %>  
+ <% end %>
+
+ </font>
+ <b>
+
+		<div class="content">
+			<%= question.content %>
+		
+		</div></b>
+		<br>
+       
+
+
+
+
+
+
+	
+      <%= form_for @answer, remote: true do |f|%>
+    
+ 		<%= f.text_area :content ,placeholder: "Write your answer", :class => 'a2', required: true%> <br>
+
+ 		<%= f.hidden_field :questions_id , :value => question.id %>
+ 	
+
+
+
+		
+		
+ 		<%= f.submit value:"Answer" ,:class => 'button1' ,id: 'create_answer_submit'%>
+ 	    <%end%>
+
+
+
+
+
+
+
+
+
+
+
+<div class="actions1"> 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<button class=" button1"  id="but1">
+
+
+<span>
+		<% if question.upvoted current_user.id %>
+
+
+		<%= link_to "UpVote",upvote_toggle_path(question_id: question.id),method: :get,id: "upvote_#{question.id}",class: "marked" ,remote: true %>,<%=question.upvotes.length %>
+		<% else %>
+		<%= link_to "UpVote",upvote_toggle_path(question_id: question.id),method: :get,id: "upvote_#{question.id}",remote: true %>,<%=question.upvotes.length %>
+		<% end %>
+		
+		</span>
+ </button>
+	
+	
+<button class="button2"  id="but1">
+
+<span>
+		<% if question.downvoted current_user.id %>
+		<%= link_to "DownVote",downvote_toggle_path(question_id: question.id),method: :get,id: "downvote_#{question.id}",class: "unmarked" ,remote: true %>
+		<% else %>
+		<%= link_to "DownVote",downvote_toggle_path(question_id: question.id),method: :get,id: "downvote_#{question.id}",remote: true %>
+		<% end %>
+		
+		</span>
+		</button>
+		</div>
+
+      
+    
+  
+
+
+
+
+
+
+
+
+
+
+ 		<div id="answer_<%=question.id%>">
+
+ 		<% @answer_feed.each do |a| %>
+
+<%= render 'answer',question_id: question.id,a: a %>
+<% end %>
+
+</div>
+
+
+
+
+
+		
+</div>
+</div>
+<br>
+
+
+<style type="text/css">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.red {
+    background-color:red;
+}
+.orange {
+    background-color:orange;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+.button1 {
+
+    background-color: #f1f8fb;
+    border: 1px solid #bbcadc;
+    border-radius: 4px;
+    color: #2b6dad;
+   margin: 4px 2px;
+    text-align: center;
+    text-decoration: none;
+    padding: 4px 15px;
+    font-size: 16px;
+    cursor: pointer;
+ width: 200px;
+  transition: all 0.5s;
+  margin: 5px;
+}
+
+.button1 span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+
+.button1 span:after {
+  content: '\00bb';
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 0.5s;
+}
+
+.button1:hover span {
+  padding-right: 25px;
+}
+
+.button1:hover span:after {
+  opacity: 1;
+  right: 0;
+}
+.button1:on click
+{
+	background-color: #de7462;
+}
+.button1:hover {background-color: #b1e0b7}
+
+
+
+.button2 {
+
+    background-color: #f1f8fb;
+    border: 1px solid #bbcadc;
+    border-radius: 4px;
+    color: #2b6dad;
+   margin: 4px 2px;
+    text-align: center;
+    text-decoration: none;
+    padding: 4px 15px;
+    font-size: 16px;
+    cursor: pointer;
+ width: 200px;
+  transition: all 0.5s;
+  margin: 5px;
+}
+
+.button2 span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+
+.button2 span:after {
+  content: '\00bb';
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 0.5s;
+}
+
+.button2:hover span {
+  padding-right: 25px;
+}
+
+.button2:hover span:after {
+  opacity: 1;
+  right: 0;
+}
+.button2:hover {background-color: #fcaeae}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ul.hello1{
+
+	margin-top:15px;
+
+}
+			
+			
+li.hello2{	
+
+	margin-top: -14px;
+	list-style:none;
+	
+	
+				
+}
+
+
+
+
+
+.forupvote{
+	display: flex;
+}
+
+.temp{
+	display: flex;
+}
+
+.date1{
+
+	
+	font-size: 12px;
+	font-color: grey;
+}
+
+
+	
+.content1{
+	
+	
+	font-size: 23px;
+	font-family: 'q_serif';
+
+}
+
+
+.content{
+	margin-top: 6px;
+	font-size: 23px;
+	font-family: 'q_serif';
+
+}
+.show1{
+				margin-top: 5px;
+				border:2px solid #efefef ;
+               display: relative;
+               
+				width: 90%;
+                background-color: #E3ECF8;
+               box-shadow: 1px 1px 0 #f7f7f7;
+                padding: 12px;
+
+               margin-left: 0px;
+
+               
+  				height: auto;
+  				word-break: break-word;
+	}
+
+
+	
+
+
+.a2{
+                    width: 100%;
+                    height: 60%;
+                    padding-left: 4px;
+                    padding-top: 4px;
+                    
+                    border: 2px solid grey; 
+                    }
+
+.error
+{
+  color: red;
+}
+.success
+{
+  color: yellow;
+}
+
+
+
+
+
+
+
+
+
+
+</style>
+
+<script type="text/javascript">
+	
+
+
+if (.marked == font-weight(B)) 
+   document.getElementById("but1").className = "error";
+else
+   document.getElementById("but1").className = "success";
+
+
+
+
+
+</script>
+
+
+
+
+
+

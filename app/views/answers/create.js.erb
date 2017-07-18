@@ -1,0 +1,4 @@
+noty({text:"Answer was sucessfully added", type: 'success', timeout: 1000});
+$('#answer_<%=@answer.questions_id%>').prepend("<%= escape_javascript (render 'home/answer',a: @answer, question_id: @answer.questions_id)%>");
+
+$('#answer_content.a2').val("");

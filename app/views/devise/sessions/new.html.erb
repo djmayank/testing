@@ -1,0 +1,124 @@
+
+<div class= "backgroundquora">
+
+<div class="finalimage">
+<%= image_tag 'background.png' %>
+</div>
+<div class="outerbox">
+
+<div class="finalimage2">
+<%= image_tag 'download.png' %>
+</div>
+
+
+
+<div class="innerbox">
+
+
+<div class="panel panel-default devise-bs">
+  <div class="panel-heading">
+    <h4><%= t('.sign_in', default: 'Sign in') %></h4>
+  </div>
+  <div class="panel-body">
+    <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: { role: 'form' }) do |f| %>
+      <div class="form-group">
+        <%= f.label :email %>
+        <%= f.email_field :email, autofocus: true, class: 'form-control' %>
+      </div>
+      <div class="form-group">
+        <%= f.label :password %>
+        <%= f.password_field :password, autocomplete: 'off', class: 'form-control' %>
+      </div>
+      <% if devise_mapping.rememberable? %>
+        <div class="checkbox">
+          <%= f.label :remember_me do %>
+            <%= f.check_box :remember_me %> <%= t('.remember_me', default: 'Remember me') %>
+          <% end %>
+        </div>
+      <% end %>
+      <%= f.submit  t('.sign_in', default: 'Sign in'), class: 'btn btn-primary' %>
+    <% end %>
+  </div>
+</div>
+<%= render 'devise/shared/links' %>
+
+
+</div>
+</div>
+
+</div>
+
+<style type="text/css">
+  
+
+.backgroundquora{
+
+  display:flex;
+  
+  position: fixed;
+}
+
+.finalimage2{
+display: inline;
+   height: 10px;
+margin-left:80px ;
+margin-top:10px;
+  margin-bottom: 50px;  
+height: 20px;
+}
+
+
+
+
+.finalimage{
+  
+  
+  background-repeat: no-repeat;
+
+    background-position: center; 
+
+
+
+}
+
+
+
+
+
+.outerbox{
+
+ border:1px solid #e2e2e2;
+ background-color: #fff;
+ position: fixed;
+  display: relative;
+  height:500px;
+  width:650px;
+  border-radius: 4px;
+  overflow-y: hidden;
+  margin-top: 76px;
+  margin-left: 391px;
+
+
+
+
+
+}
+
+
+.innerbox{
+
+ display: relative;
+  position:fixed;
+  height:1000px;
+  width:290px;
+  margin-left: 330px;
+
+
+
+
+
+}
+
+
+
+</style>
